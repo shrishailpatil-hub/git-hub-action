@@ -1,0 +1,36 @@
+name: scope-check
+
+on:
+  workflow_dispatch:
+    
+env:
+ workflowvar: this is workflow var
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    env:
+      jobvar: this is job var
+    steps:
+      - name : Scope check step 1
+        env:
+         stepvar: This is step var
+        run: |
+          echo "Workfloe var = $workflowvar"
+          echo "Job var = $jobvar"
+          echo "step var = $stepvar"
+
+      - name : Scope check step 2
+        run: |
+          echo "Workfloe var = $workflowvar"
+          echo "Job var = $jobvar"
+          echo "step var = $stepvar"
+
+  job-2:
+    runs-on: ubuntu-lastest
+    steps:
+      - run: |
+          echo "Workfloe var = $workflowvar"
+          echo "Job var = $jobvar"
+          echo "step var = $stepvar"
+
