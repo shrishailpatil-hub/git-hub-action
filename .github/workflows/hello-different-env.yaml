@@ -1,0 +1,27 @@
+name: hello-cpp-env
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say-hello-cpp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create cpp file
+        run: |
+          cat > hello.cpp << EOF
+          #include <iostream>
+          using namespace std;
+
+          int main() {
+              cout << "Hello there in cpp" << endl;
+              return 0;
+          }
+          EOF
+
+      - name: Compile
+        run: g++ hello.cpp -o hello
+
+      - name: Run
+        run: ./hello
