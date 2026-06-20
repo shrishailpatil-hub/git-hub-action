@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-        - trigger-file.cpp
+        - "*.cpp"
 jobs:
   trigger-on-push:
     runs-on: ubuntu-latest
