@@ -1,0 +1,11 @@
+name: filter-files-on-push
+
+on:
+  push:
+    branches:
+      - "trigger-file/*"
+jobs:
+  trigger-on-push:
+    runs-on: ubntu:latest
+    steps:
+      - run: echo "triggered by a trigger push file named trigger-file"
