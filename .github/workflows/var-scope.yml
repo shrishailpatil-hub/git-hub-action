@@ -27,7 +27,7 @@ jobs:
           echo "step var = $stepvar"
 
   job-2:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
       - run: |
           echo "Workfloe var = $workflowvar"
