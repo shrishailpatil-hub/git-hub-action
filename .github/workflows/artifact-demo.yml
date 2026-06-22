@@ -1,0 +1,31 @@
+name: Demo Artifact
+
+on:
+  workflow_dispatch:
+
+jobs:
+  produce-file:
+    name: Artifact producer
+    runs-on: ubuntu-latest
+    steps:
+      - name: create file
+        run: |
+          echo "Hey this is artifact file made in Job Producer file">>artifact.txt
+      - name: upload the file
+        uses: action/upload-artifact@v4
+        with:
+          name: myArtifact
+          path: artifact.txt
+  
+  consume-file: 
+    name: Artifact consumer
+    runs-on: ubuntu-latest
+    needs: produce-file
+    steps:
+      - name: download the file
+        uses: action/download-artifact@v4
+        with:
+          name: myArtifact
+          path: artifact.txt
+      - name: Print the file
+        run: cat artifact.txt    
