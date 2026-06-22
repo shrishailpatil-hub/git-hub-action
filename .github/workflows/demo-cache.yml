@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Restore Cache
+      - name: Restore cache
         id: demo-cache
         uses: actions/cache@v4
         with:
@@ -25,4 +25,5 @@ jobs:
       - name: Verify cache
         run: |
           echo "Cache hit? -> ${{ steps.demo-cache.outputs.cache-hit }}"
+          ls -la myDir
           cat myDir/myFile.txt
