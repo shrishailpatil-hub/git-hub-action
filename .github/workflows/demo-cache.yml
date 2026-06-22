@@ -30,4 +30,4 @@ jobs:
       - name: Verify cache
         run: |
           echo "Cache is hit? -> ${{steps.demo-cache.outputs.cache-hit}}"
-          cat myDir/myFile.txt
+          cat myFile.txt
