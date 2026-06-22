@@ -12,7 +12,7 @@ jobs:
         run: |
           echo "Hey this is artifact file made in Job Producer file">>artifact.txt
       - name: upload the file
-        uses: action/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: myArtifact
           path: artifact.txt
@@ -23,9 +23,9 @@ jobs:
     needs: produce-file
     steps:
       - name: download the file
-        uses: action/download-artifact@v4
+        uses: actions/download-artifact@v4
         with:
           name: myArtifact
-          path: artifact.txt
+         # path: myArtifactFolder
       - name: Print the file
         run: cat artifact.txt    
