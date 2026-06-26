@@ -1,0 +1,21 @@
+name: Testing myself
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  job-1:
+    name: Producer
+    runs-on: ubuntu-latest
+    steps:
+        - name : Print statement
+          run : |
+            echo "Hey this is the producer that needs to be run before "
+  job-2:
+    name: Consumer
+    runs-on: ubuntu-latest
+    needs: [job-1]
+    steps:
+      - name: After producer
+        run: |
+          echo "I will run after the producer"
